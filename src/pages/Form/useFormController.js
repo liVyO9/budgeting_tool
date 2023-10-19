@@ -1,32 +1,53 @@
 import { useEffect, useState } from "react";
 
 const useFormController = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [usersData, setUsersData] = useState([]);
+  const [rolesData, setRolesData] = useState([]);
+  const [isUsersDataLoading, setIsUsersDataLoading] = useState(true);
+  const [isRolesDataLoading, setIsRolesDataLoading] = useState(true);
 
-  const fetchData = async () => {
+  const fetchUsersData = async () => {
     fetch("http://localhost:3030/users")
       .then((response) => {
         return response.json();
       })
       .then((fetchedData) => {
-        setData(fetchedData);
+        setUsersData(fetchedData);
       })
       .catch((error) => {
         console.error("Error: ", error);
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsUsersDataLoading(false);
+      });
+  };
+
+  const fetchRolesData = async () => {
+    fetch("http://localhost:3030/roles")
+      .then((response) => {
+        return response.json();
+      })
+      .then((fetchedData) => {
+        setRolesData(fetchedData);
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      })
+      .finally(() => {
+        setIsRolesDataLoading(false);
       });
   };
 
   useEffect(() => {
-    fetchData();
+    fetchUsersData();
+    fetchRolesData();
   }, []);
 
   return {
-    data,
-    isLoading,
+    usersData,
+    rolesData,
+    isUsersDataLoading,
+    isRolesDataLoading,
   };
 };
 
