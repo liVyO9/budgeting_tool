@@ -1,0 +1,107 @@
+{
+    "roles": [
+        "Project Manager",
+        "Designer",
+        "Backend Developer",
+        "Frontend Developer",
+        "Account Executive",
+        "Financial Executive",
+        "Creative Director",
+        "Logo / Graphic Designer",
+        "Content Writer",
+        "Photographer",
+        "Consultant"
+    ],
+    "users": [
+        {
+            "id": 1,
+            "name": "Allison Pidduck",
+            "hourlyRate": 95,
+            "roles": ["Frontend Developer", "Backend Developer"]
+        },
+        {
+            "id": 2,
+            "name": "Sallyann Dainton",
+            "hourlyRate": 25,
+            "roles": ["Project Manager", "Content Writer"]
+        },
+        {
+            "id": 3,
+            "name": "Debee Petrasso",
+            "hourlyRate": 10,
+            "roles": ["Creative Director", "Account Executive"]
+        },
+        {
+            "id": 4,
+            "name": "Harrison MacGibbon",
+            "hourlyRate": 68,
+            "roles": ["Logo / Graphic Designer"]
+        },
+        {
+            "id": 5,
+            "name": "Idell Stiff",
+            "hourlyRate": 20,
+            "roles": []
+        },
+        {
+            "id": 6,
+            "name": "Constantina Coushe",
+            "hourlyRate": 38,
+            "roles": ["Project Manager"]
+        },
+        {
+            "id": 7,
+            "name": "Bridget Strand",
+            "hourlyRate": 90,
+            "roles": ["Frontend Developer"]
+        },
+        {
+            "id": 8,
+            "name": "Cindy Kermeen",
+            "hourlyRate": 112,
+            "roles": ["Photographer"]
+        },
+        {
+            "id": 9,
+            "name": "Ram Stollenbecker",
+            "hourlyRate": 62,
+            "roles": ["Content Writer"]
+        },
+        {
+            "id": 10,
+            "name": "Estrella Roxby",
+            "hourlyRate": 80,
+            "roles": ["Project Manager", "Logo / Graphic Designer"]
+        },
+        {
+            "id": 11,
+            "name": "Catha McGragh",
+            "hourlyRate": 18,
+            "roles": ["Creative Director", "Account Executive"]
+        },
+        {
+            "id": 12,
+            "name": "Donelle Blackboro",
+            "hourlyRate": 23,
+            "roles": ["Content Writer"]
+        },
+        {
+            "id": 13,
+            "name": "Winona Giannini",
+            "hourlyRate": 50,
+            "roles": ["Photographer"]
+        },
+        {
+            "id": 14,
+            "name": "Marice Edie",
+            "hourlyRate": 125,
+            "roles": ["Account Executive"]
+        },
+        {
+            "id": 15,
+            "name": "Kristopher Roderighi",
+            "hourlyRate": 45,
+            "roles": ["Consultant"]
+        }
+    ]
+}
