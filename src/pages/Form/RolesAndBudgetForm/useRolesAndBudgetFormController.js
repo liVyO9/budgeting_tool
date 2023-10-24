@@ -1,6 +1,6 @@
 import { useController, useForm } from "react-hook-form";
 
-const useRolesAndBudgetFormController = (totalBudget) => {
+const useRolesAndBudgetFormController = ({ rolesAndBudget, totalBudget }) => {
   const { register, control, handleSubmit } = useForm();
 
   const budgetInpercentController = useController({

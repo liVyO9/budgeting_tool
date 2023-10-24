@@ -5,7 +5,7 @@ const useFormController = () => {
   const [rolesData, setRolesData] = useState([]);
   const [isUsersDataLoading, setIsUsersDataLoading] = useState(true);
   const [isRolesDataLoading, setIsRolesDataLoading] = useState(true);
-  const [totalBudget, setTotalBudget] = useState();
+  const [totalBudget, setTotalBudget] = useState(0);
   const [rolesAndBudget, setRolesAndBudget] = useState([]);
   const [usedBudget, setUsedBudget] = useState({ inPercentage: 0, usd: 0 });
 
@@ -14,6 +14,12 @@ const useFormController = () => {
   };
 
   const onRolesAndBudgetSubmit = (inputData) => {
+    const doesRoleExist = rolesAndBudget.some(
+      (obj) => obj["role"] === inputData.roleOption
+    );
+
+    if (doesRoleExist) return;
+
     setRolesAndBudget((prevData) => [
       ...prevData,
       {
@@ -26,7 +32,16 @@ const useFormController = () => {
       inPercentage: prevData.inPercentage + inputData.budgetInPercentInput,
       usd: prevData.usd + inputData.budgetInput,
     }));
-    console.log(usedBudget);
+  };
+
+  const onDeleteRole = ({ role, budgetInPercent, budget }) => {
+    const restRoles = rolesAndBudget.filter((obj) => obj.role !== role);
+    setRolesAndBudget(restRoles);
+
+    setUsedBudget((prevData) => ({
+      inPercentage: prevData.inPercentage - budgetInPercent,
+      usd: prevData.usd - budget,
+    }));
   };
 
   const fetchUsersData = async () => {
@@ -76,6 +91,7 @@ const useFormController = () => {
     rolesAndBudget,
     usedBudget,
     onRolesAndBudgetSubmit,
+    onDeleteRole,
   };
 };
 

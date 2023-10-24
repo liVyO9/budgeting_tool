@@ -12,7 +12,7 @@ const TeamMembersForm = ({ rolesAndBudget, usedBudget }) => {
       budget: "",
     },
   });
-  console.log(rolesAndBudget);
+
   return (
     <div>
       <h4>3. Assign team members to the role.</h4>

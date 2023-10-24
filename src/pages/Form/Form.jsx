@@ -18,6 +18,7 @@ const Form = () => {
     rolesAndBudget,
     usedBudget,
     onRolesAndBudgetSubmit,
+    onDeleteRole,
   } = useFormController();
 
   if (isUsersDataLoading || isRolesDataLoading) {
@@ -31,13 +32,14 @@ const Form = () => {
         totalBudget={totalBudget}
         onSubmit={onTotalBudgetSubmit}
       />
-      {totalBudget && (
+      {!!totalBudget && (
         <RolesAndBudgetForm
           totalBudget={totalBudget}
           rolesAndBudget={rolesAndBudget}
           usedBudget={usedBudget}
           rolesData={rolesData}
           onSubmit={onRolesAndBudgetSubmit}
+          onDeleteRole={onDeleteRole}
         />
       )}
       <TeamMembersForm

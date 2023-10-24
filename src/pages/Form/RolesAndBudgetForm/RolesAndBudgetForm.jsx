@@ -8,6 +8,7 @@ const RolesAndBudgetForm = ({
   rolesAndBudget,
   usedBudget,
   onSubmit,
+  onDeleteRole,
 }) => {
   const {
     register,
@@ -16,7 +17,7 @@ const RolesAndBudgetForm = ({
     budgetController,
     handleBudgetInputChange,
     handleBudgetInpercentInputChange,
-  } = useRolesAndBudgetFormController(totalBudget);
+  } = useRolesAndBudgetFormController({ rolesAndBudget, totalBudget });
 
   return (
     <div>
@@ -68,15 +69,17 @@ const RolesAndBudgetForm = ({
             {rolesAndBudget.map((data) => (
               <tr key={data.role}>
                 <td>{data.role}</td>
-                <td>{data.budget / totalBudget}</td>
-                <td>{data.budget}</td>
-                <td></td>
+                <td>{data.budgetInPercent} %</td>
+                <td>$ {data.budget}</td>
+                <td>
+                  <button onClick={() => onDeleteRole(data)}>Delete</button>
+                </td>
               </tr>
             ))}
             <tr>
               <td>Total:</td>
-              <td>{usedBudget.inPercentage}</td>
-              <td>{usedBudget.usd}</td>
+              <td>{usedBudget.inPercentage} %</td>
+              <td>$ {usedBudget.usd}</td>
               <td></td>
             </tr>
           </tbody>
