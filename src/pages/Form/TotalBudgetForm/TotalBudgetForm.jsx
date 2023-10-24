@@ -15,14 +15,17 @@ const TotalBudgetForm = ({ totalBudget, onSubmit }) => {
 
   return (
     <div>
-      <h4>1. What is your budget?</h4>
       {totalBudget ? (
-        <p>$ {totalBudget}</p>
+        <p>Budget: $ {totalBudget}</p>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)}>
-          $<input {...register("budget", { required: "This is required." })} />
-          <button>Submit</button>
-        </form>
+        <div>
+          <h4>1. What is your budget?</h4>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            $
+            <input {...register("budget", { required: "This is required." })} />
+            <button>Submit</button>
+          </form>
+        </div>
       )}
       {errors.budget?.message}
     </div>

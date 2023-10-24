@@ -1,8 +1,10 @@
 import { useController, useForm } from "react-hook-form";
-import { memo } from "react";
+import { memo, useState } from "react";
 import styled from "styled-components";
+import TeamMembersModal from "./TeamMembersModal/TeamMembersModal";
 
 const TeamMembersForm = ({ rolesAndBudget, usedBudget }) => {
+  const [isModalOpened, setIsModalOpened] = useState(false);
   const {
     register,
     handleSubmit,
@@ -12,6 +14,14 @@ const TeamMembersForm = ({ rolesAndBudget, usedBudget }) => {
       budget: "",
     },
   });
+
+  const openModal = () => {
+    setIsModalOpened((prev) => !prev);
+  };
+
+  const onModalClose = () => {
+    setIsModalOpened((prev) => !prev);
+  };
 
   return (
     <div>
@@ -30,10 +40,10 @@ const TeamMembersForm = ({ rolesAndBudget, usedBudget }) => {
           {rolesAndBudget.map((data) => (
             <tr key={data.role}>
               <td>{data.role}</td>
-              <td>{data.budgetInPercent}</td>
-              <td>{data.budget}</td>
+              <td>{data.budgetInPercent} %</td>
+              <td>$ {data.budget}</td>
               <td>
-                <button>Add</button>
+                <button onClick={openModal}>Add</button>
               </td>
               <td>0</td>
             </tr>
@@ -45,6 +55,7 @@ const TeamMembersForm = ({ rolesAndBudget, usedBudget }) => {
           </tr>
         </tbody>
       </table>
+      <TeamMembersModal isOpen={isModalOpened} onClose={onModalClose} />
     </div>
   );
 };

@@ -17,8 +17,10 @@ const Form = () => {
     totalBudget,
     rolesAndBudget,
     usedBudget,
-    onRolesAndBudgetSubmit,
+    addRoleAndBudget,
     onDeleteRole,
+    rolesAndBugetSet,
+    onContinue,
   } = useFormController();
 
   if (isUsersDataLoading || isRolesDataLoading) {
@@ -32,20 +34,23 @@ const Form = () => {
         totalBudget={totalBudget}
         onSubmit={onTotalBudgetSubmit}
       />
-      {!!totalBudget && (
+      {!!totalBudget && !rolesAndBugetSet && (
         <RolesAndBudgetForm
           totalBudget={totalBudget}
           rolesAndBudget={rolesAndBudget}
           usedBudget={usedBudget}
           rolesData={rolesData}
-          onSubmit={onRolesAndBudgetSubmit}
+          addRoleAndBudget={addRoleAndBudget}
           onDeleteRole={onDeleteRole}
+          onContinue={onContinue}
         />
       )}
-      <TeamMembersForm
-        rolesAndBudget={rolesAndBudget}
-        usedBudget={usedBudget}
-      />
+      {rolesAndBugetSet && (
+        <TeamMembersForm
+          rolesAndBudget={rolesAndBudget}
+          usedBudget={usedBudget}
+        />
+      )}
     </div>
   );
 };

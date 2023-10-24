@@ -8,12 +8,13 @@ const useFormController = () => {
   const [totalBudget, setTotalBudget] = useState(0);
   const [rolesAndBudget, setRolesAndBudget] = useState([]);
   const [usedBudget, setUsedBudget] = useState({ inPercentage: 0, usd: 0 });
+  const [rolesAndBugetSet, setRolesAndBugetSet] = useState(false);
 
   const onTotalBudgetSubmit = (data) => {
-    setTotalBudget(data.budget);
+    setTotalBudget(parseInt(data.budget));
   };
 
-  const onRolesAndBudgetSubmit = (inputData) => {
+  const addRoleAndBudget = (inputData) => {
     const doesRoleExist = rolesAndBudget.some(
       (obj) => obj["role"] === inputData.roleOption
     );
@@ -42,6 +43,10 @@ const useFormController = () => {
       inPercentage: prevData.inPercentage - budgetInPercent,
       usd: prevData.usd - budget,
     }));
+  };
+
+  const onContinue = () => {
+    setRolesAndBugetSet(true);
   };
 
   const fetchUsersData = async () => {
@@ -90,8 +95,10 @@ const useFormController = () => {
     totalBudget,
     rolesAndBudget,
     usedBudget,
-    onRolesAndBudgetSubmit,
+    addRoleAndBudget,
     onDeleteRole,
+    rolesAndBugetSet,
+    onContinue,
   };
 };
 

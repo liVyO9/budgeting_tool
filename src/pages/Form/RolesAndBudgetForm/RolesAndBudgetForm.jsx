@@ -7,8 +7,9 @@ const RolesAndBudgetForm = ({
   rolesData,
   rolesAndBudget,
   usedBudget,
-  onSubmit,
+  addRoleAndBudget,
   onDeleteRole,
+  onContinue,
 }) => {
   const {
     register,
@@ -19,10 +20,11 @@ const RolesAndBudgetForm = ({
     handleBudgetInpercentInputChange,
   } = useRolesAndBudgetFormController({ rolesAndBudget, totalBudget });
 
+  const disableContinue = usedBudget.usd !== totalBudget;
   return (
     <div>
       <h4>2. Insert roles and budget to your needs.</h4>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(addRoleAndBudget)}>
         <table>
           <thead>
             <tr>
@@ -85,6 +87,9 @@ const RolesAndBudgetForm = ({
           </tbody>
         </table>
       </form>
+      <button disabled={disableContinue} onClick={onContinue}>
+        Continue
+      </button>
     </div>
   );
 };
