@@ -40,7 +40,10 @@ const Form = () => {
           onSubmit={onRolesAndBudgetSubmit}
         />
       )}
-      <TeamMembersForm />
+      <TeamMembersForm
+        rolesAndBudget={rolesAndBudget}
+        usedBudget={usedBudget}
+      />
     </div>
   );
 };

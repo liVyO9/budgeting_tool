@@ -14,7 +14,6 @@ const useFormController = () => {
   };
 
   const onRolesAndBudgetSubmit = (inputData) => {
-    console.log(inputData);
     setRolesAndBudget((prevData) => [
       ...prevData,
       {
